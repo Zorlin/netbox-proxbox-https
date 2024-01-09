@@ -26,16 +26,16 @@ class NetboxSession:
         print("Establish Netbox connection...")
         try:
             # CHANGE SSL VERIFICATION TO FALSE
-            session = requests.Session()
-            session.verify = False
+            #session = requests.Session()
+            #session.verify = False
             
             netbox_session = pynetbox.api(
-                    f'http://{self.domain}:{self.http_port}{DEFAULT_BASE_PATH}',
+                    f'https://{self.domain}:{self.http_port}{DEFAULT_BASE_PATH}',
                     token=self.token,
                     threading=True,
             )
             # DISABLES SSL VERIFICATION
-            netbox_session.http_session = session
+            #netbox_session.http_session = session
             
             return netbox_session
         
