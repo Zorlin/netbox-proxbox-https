@@ -196,10 +196,10 @@ for s in PROXMOX_SETTING:
 # TODO: CREATES SSL VERIFICATION - Issue #32
 try:
     # CHANGE SSL VERIFICATION TO FALSE
-    session = requests.Session()
-    session.verify = False
+    #session = requests.Session()
+    #session.verify = False
 
-    NETBOX = 'http://{}:{}{}'.format(NETBOX, NETBOX_PORT, DEFAULT_BASE_PATH)
+    NETBOX = 'https://{}:{}{}'.format(NETBOX, NETBOX_PORT, DEFAULT_BASE_PATH)
 
     # Start NETBOX session
     NETBOX_SESSION = pynetbox.api(
@@ -207,7 +207,7 @@ try:
         token=NETBOX_TOKEN
     )
     # DISABLES SSL VERIFICATION
-    NETBOX_SESSION.http_session = session
+    #NETBOX_SESSION.http_session = session
 
 except:
     raise RuntimeError(f"Error trying to initialize Netbox Session using TOKEN {NETBOX_TOKEN} provided.")
